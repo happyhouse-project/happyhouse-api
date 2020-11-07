@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.main {
+	background-color: white;
+	min-height: 1800px;
+}
+
+.content {
+	text-align: center;
+}
+
+p a{
+	margin-left:10px;
+	font-size:14px;
+	color: black;
+}
+
+h3 {
+	padding: 30px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.hr-main {
+	border: 1px solid black;
+}
+
+hr {
+	margin: 5px;
+}
+
+.navbar {
+	margin-left:42%;
+}
+
+input[type="checkbox"] {
+	float:right;
+   	margin-right:2%; 
+}
