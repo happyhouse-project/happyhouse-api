@@ -100,7 +100,7 @@
 						<div class="notice">
 							<span class="title">공지사항</span>
 							<button class="addBtn notice-add-btn" type="button"
-								onclick="location.href = './notice?act=list'">더보기</button>
+								onclick="location.href = 'notice/list'">더보기</button>
 							<hr>
 						</div>
 					</div>

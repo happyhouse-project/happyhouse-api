@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <header>
 	<div class="logo">
-		<a href="index"><img class="logo-img" alt="logo"
+		<a href="${pageContext.request.contextPath}"><img class="logo-img" alt="logo"
 			src="${pageContext.request.contextPath}/static/images/happyhouse_logo.png"></a>
 	</div>
 	<div class="menu">

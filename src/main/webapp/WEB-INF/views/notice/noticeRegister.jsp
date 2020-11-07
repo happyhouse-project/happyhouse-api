@@ -6,19 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="../css/index.css">
-<link rel="stylesheet" type="text/css" href="../css/noticeList.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/index.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/noticeList.css">
 <title>공지사항</title>
 </head>
 <body>
 	<div class="container-fluid p-0">
-		<jsp:include page="header.jsp" />
+		<jsp:include page="../theme/header.jsp" />
 		<div class="main">
 			<div class="infolist">
 				<h3>공지사항 등록</h3>
 				<hr class="hr-main">
 				<center>
-					<form method='post' action='notice?act=registerProcess'>
+					<form method='post' action='./registerProcess'>
 						<table>
 							<tr>
 								<td><h1>새글쓰기</h1></td>
@@ -43,8 +43,8 @@
 				</center>
 			</div>
 		</div>
-		<jsp:include page="footer.html" />
+		<jsp:include page="../theme/footer.jsp" />
 	</div>
-	<jsp:include page="library.html" />
+	<jsp:include page="../theme/library.jsp" />
 </body>
 </html>
