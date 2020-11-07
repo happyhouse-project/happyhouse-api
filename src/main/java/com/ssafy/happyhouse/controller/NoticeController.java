@@ -67,7 +67,7 @@ public class NoticeController {
 	@PostMapping("registerProcess")
 	public String registerProcess(@ModelAttribute Notice notice) {
 		noticeService.insert(notice);
-		return "redirect:/"+PATH+"noticeList";
+		return "redirect:/"+PATH+"list";
 	}
 	
 	@GetMapping(value = "/detail")
@@ -79,6 +79,12 @@ public class NoticeController {
 		return PATH+"noticeDetail";
 	}
 	
-	
+	@GetMapping(value = "/delete")
+	public String delete(HttpServletRequest req) {
+		int deleteId = Integer.parseInt(req.getParameter("id"));
+		noticeService.delete(deleteId);
+		
+		return "redirect:/"+PATH+"list";
+	}
 	
 }
