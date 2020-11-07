@@ -6,6 +6,6 @@
 </body>
 <script>
 alert('로그아웃이 성공적으로 완료되었습니다');
-document.location.href="./index";
+document.location.href="${pageContext.request.contextPath}";
 </script>
 </html>

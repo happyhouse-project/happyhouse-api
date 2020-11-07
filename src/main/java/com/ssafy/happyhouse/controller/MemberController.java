@@ -38,14 +38,14 @@ public class MemberController {
 		return LOGIN_PATH+"register";
 	}
 	
-	@GetMapping("/registerProcess")
+	@PostMapping("/registerProcess")
 	public String registerProcess(@ModelAttribute Member member) {
 		member.setAuth(1);
 		memberService.register(member);
 		return LOGIN_PATH+"registerSuccess";
 	}
 	
-	@PostMapping("/login")
+	@GetMapping("/login")
 	public String loginProcess() {
 		return LOGIN_PATH+"login";
 	}
@@ -60,7 +60,7 @@ public class MemberController {
 		return LOGIN_PATH+"loginSuccess";
 	}
 	
-	@PostMapping("/logout")
+	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.setAttribute("member", null);
 		return LOGIN_PATH+"logout";

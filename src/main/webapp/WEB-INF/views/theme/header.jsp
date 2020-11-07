@@ -12,19 +12,19 @@
 			<li><a href="map?act=house">연립다세대 주택</a></li>
 			<li><a href="localInfo.html">동네 상가정보 확인</a></li>
 			<c:if test="${!empty member and member.auth eq 2}">
-				<li><a href="member?act=memberList">회원관리</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/list">회원관리</a></li>
 			</c:if>
 		</ul>
 	</div>
 	<div class="login">
 		<c:if test="${empty member}">
 			<button type="button" class="btn btn-primary"
-				onclick="location.href = 'member?act=login'">로그인</button>
+				onclick="location.href = '${pageContext.request.contextPath}/member/login'">로그인</button>
 		</c:if>
 		<c:if test="${!empty member}">
-		${member.lastname}${member.firstname}님 환영합니다
+		${member.name}님 환영합니다
 		<button type="button" class="btn btn-primary"
-				onclick="location.href = 'member?act=logout'">로그아웃</button>
+				onclick="location.href = '${pageContext.request.contextPath}/member/logout'">로그아웃</button>
 		</c:if>
 	</div>
 </header>
