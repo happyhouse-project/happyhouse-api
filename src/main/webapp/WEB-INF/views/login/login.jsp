@@ -24,7 +24,7 @@
   </head>
   <body>
     <div class="login-form">
-      <form action="member?act=loginProcess" method="post">
+      <form action="member/loginProcess" method="post">
         <h2 class="text-center">로그인</h2>
         <div class="form-group">
           <div class="input-group">

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.mapper.MemberMapper">
+
+	<!-- 회원 리스트 가져오기 -->
+	<select id="list" resultType="Member">
+		select * from member
+		order by id desc;
+	</select>
+
+	<!-- 회원 로그인 -->
+	<select id="doLogin" parameterType="map" resultType="Member">
+		select * from member
+		where email = #{email}
+		and password = #{password}
+	</select>
+
+	<!-- 회원 등록 -->
+	<insert id="register" parameterType="Member">
+		insert into member
+		(email, password, name, phone, address, auth)
+		values(#{email}, #{password}, #{name}, #{phone}, #{address}, #{auth})
+	</insert>
+
+	<!-- 회원정보 수정 -->
+	<update id="update" parameterType="Member">
+		update member 
+		set phone = #{phone},
+		address = #{address}
+		where id = #{id}
+	</update>
+
+	<!-- 회원비활성화 수정 -->
+	<update id="inactiveMember" parameterType="int">
+		update member
+		set auth = 0 
+		where id = #{id}
+	</update>
+
+</mapper>
