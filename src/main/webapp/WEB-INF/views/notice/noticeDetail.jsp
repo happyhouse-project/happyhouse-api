@@ -42,7 +42,7 @@
 							<TD COLSPAN=3><textarea readonly cols=120 rows=20>${notice.content}</textarea></TD>
 						</TR>
 					</TABLE>
-					<br> <br> <a href="notice?act=delete&id=${notice.id}">삭제하기</a>&nbsp;&nbsp;&nbsp;
+					<br> <br> <a href="./delete?id=${notice.id}">삭제하기</a>&nbsp;&nbsp;&nbsp;
 					<br>
 				</center>
 				<jsp:include page="../theme/footer.jsp" />

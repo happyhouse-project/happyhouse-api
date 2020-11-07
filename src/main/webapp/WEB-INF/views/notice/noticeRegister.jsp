@@ -39,7 +39,7 @@
 						</table>
 					</form>
 					<p>
-						<a href="notice?act=list">공지사항 리스트</a>&nbsp;&nbsp;&nbsp;
+						<a href="./list">공지사항 리스트</a>&nbsp;&nbsp;&nbsp;
 				</center>
 			</div>
 		</div>

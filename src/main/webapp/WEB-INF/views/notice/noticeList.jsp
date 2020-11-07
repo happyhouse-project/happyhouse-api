@@ -21,7 +21,7 @@
 								onclick="location.href = './register'">공지 추가하기</button></c:if>
 				<hr class="hr-main">
 				<c:forEach items="${list}" var="notice">
-					<p><a href="notice?act=detail&id=${notice.id}">${notice.title}</a></p><hr>
+					<p><a href="./detail?id=${notice.id}">${notice.title}</a></p><hr>
 				</c:forEach>
 			</div>
 		</div>
