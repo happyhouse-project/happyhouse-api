@@ -6,6 +6,6 @@
 </body>
 <script>
 alert('회원가입이 완료되었습니다');
-document.location.href="./member?act=login";
+document.location.href="./login";
 </script>
 </html>
