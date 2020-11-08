@@ -66,7 +66,7 @@
 					<div class="col">
 						<script>
 						$(document).ready(function(){
-							$.get("${pageContext.request.contextPath}/happy/news"
+							$.get("${pageContext.request.contextPath}/news/mainNewsList"
 									,function(data, status){
 										$.each(data, function(index, vo) {
 											$(".news").append("<div class='notice-link'><a href='"+vo.link+"'>"+vo.title+"</a></div>");
@@ -79,7 +79,7 @@
 						<div class="news">
 							<span class="title">뉴스</span>
 							<button class="addBtn news-add-btn" type="button"
-								onclick="location.href = './news?act=list'">더보기</button>
+								onclick="location.href = 'news/list'">더보기</button>
 							<hr>
 						</div>
 					</div>
