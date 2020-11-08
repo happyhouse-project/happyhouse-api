@@ -13,16 +13,16 @@
 </head>
 <body>
 	<div class="container-fluid p-0">
-		<jsp:include page="header.jsp" />
+		<jsp:include page="../theme/header.jsp"/>
 		<div class="news-main">
-			<form action="./news/registerProcess" method="post">
+			<form action="./registerProcess" method="post">
 				<div class="infolist">
 					<h3>뉴스</h3>
 					<hr class="hr-main">
 					<c:forEach items="${list}" var="news">
 						<p>
 							<a href="${news.link}" target="_blank">${news.title}</a>
-							<input type="checkbox" name="newsInfo" value="${news.title}###${news.link}###${news.category}###${news.id}">
+							<input type="checkbox" name="newsInfo" value="${news.title}###${news.link}###${news.category}">
 						</p>
 						<hr>
 					</c:forEach>
@@ -39,13 +39,13 @@
 								href="./news/newsInfo?page=${param.page-1}">Previous</a></li>
 						</c:if>
 						<li class="page-item"><a class="page-link"
-							href="./news/newsInfo?page=${param.page+1}">${param.page+1}</a></li>
+							href="./newsInfo?page=${param.page+1}">${param.page+1}</a></li>
 						<li class="page-item"><a class="page-link"
-							href="./news/newsInfo?page=${param.page+2}">${param.page+2}</a></li>
+							href="./newsInfo?page=${param.page+2}">${param.page+2}</a></li>
 						<li class="page-item"><a class="page-link"
-							href="./news/newsInfo?page=${param.page+3}">${param.page+3}</a></li>
+							href="./newsInfo?page=${param.page+3}">${param.page+3}</a></li>
 						<li class="page-item"><a class="page-link"
-							href="./news/newsInfo?page=${param.page+4}">Next</a></li>
+							href="./newsInfo?page=${param.page+4}">Next</a></li>
 					</ul>
 				</nav>
 			</div>

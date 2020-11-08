@@ -21,13 +21,18 @@
 		select id, title, link, category 
 		from news
 		order by id asc
-		limit 20*(#{id}-1), 20
+		limit #{from}, 20
 	</select>
 
-	<insert id="register" parameterType="News">
+	<insert id="register" parameterType="java.util.List">
 		insert into housenews
 		(title, link, category, register, registerId)
-		values(#{title}, #{link}, #{category}, #{register}, #{registerId})
+		values
+		<foreach item="item" collection="list" separator=",">
+		(#{item.title}, #{item.link}, 
+		#{item.category}, #{item.register}, 
+		#{item.registerId})
+		</foreach>
 	</insert>
 
 	<delete id="delete" parameterType="int">

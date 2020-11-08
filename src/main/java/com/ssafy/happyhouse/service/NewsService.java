@@ -2,11 +2,12 @@ package com.ssafy.happyhouse.service;
 
 import java.util.ArrayList;
 
+import com.ssafy.happyhouse.model.Member;
 import com.ssafy.happyhouse.model.News;
 
 public interface NewsService {
 
-	void register(String[] newsInfo, int registerId); // 뉴스 등록
+	void register(String[] newsInfo, Member member); // 뉴스 등록
 
 	ArrayList<News> selectByLimit7(); // 뉴스 타이틀 리스트 가져오기
 

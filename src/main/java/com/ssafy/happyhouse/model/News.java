@@ -28,10 +28,10 @@ public class News {
 	/** 뉴스 등록자 id */
 	private int registerId;
 
-	/** 뉴스 등록일자 */
-	private String registerDate;
-
 	/** 카테고리 */
 	private String category;
+	
+	/** 뉴스 등록일자 */
+	private String registerDate;
 
 }

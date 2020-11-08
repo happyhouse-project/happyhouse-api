@@ -35,7 +35,7 @@ public class NewsDaoImpl implements NewsDao{
 	}
 
 	@Override
-	public ArrayList<News> selectByPage(int page) {
-		return newsMapper.selectByPage(page);
+	public ArrayList<News> selectByPage(int from) {
+		return newsMapper.selectByPage(from);
 	}
 }

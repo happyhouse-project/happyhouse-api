@@ -19,7 +19,7 @@
 				<h3>뉴스</h3>
 				<c:if test="${!empty member and member.auth eq 2}">
 				<button class="addBtn btn-right" type="button"
-								onclick="location.href = './news/newsInfo?page=1'">뉴스 추가하기</button></c:if>
+								onclick="location.href = './newsInfo?page=1'">뉴스 추가하기</button></c:if>
 				<hr class="hr-main">
 				<c:forEach items="${list}" var="news">
 					<p><a href="${news.link}">${news.title}</a></p><hr>

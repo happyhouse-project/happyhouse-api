@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ssafy.happyhouse.model.Member;
 import com.ssafy.happyhouse.model.News;
 import com.ssafy.happyhouse.model.Notice;
 import com.ssafy.happyhouse.service.NewsService;
@@ -84,11 +85,11 @@ public class NewsController {
 		}
 
 		HttpSession httpSession = req.getSession();
-		// Member member = (Member) httpSession.getAttribute("member");
+		Member member = (Member) httpSession.getAttribute("member");
 
-		newsService.register(newsInfo, 9);
+		newsService.register(newsInfo, member);
 		
-		return "redirect:/"+PATH+"newsList";
+		return "redirect:/"+PATH+"list";
 	}
 	
 	@PostMapping(value = "/delete")
@@ -96,7 +97,7 @@ public class NewsController {
 		int deleteId = Integer.parseInt(req.getParameter("id"));
 		newsService.delete(deleteId);
 		
-		return "redirect:/"+PATH+"newsList";
+		return "redirect:/"+PATH+"list";
 	}
 	
 	
