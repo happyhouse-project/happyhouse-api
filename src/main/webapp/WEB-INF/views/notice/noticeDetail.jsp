@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<jsp:include page="../theme/library.jsp" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css"
@@ -47,6 +48,7 @@
 				</center>
 				<jsp:include page="../theme/footer.jsp" />
 			</div>
-			<jsp:include page="../theme/library.jsp" />
+		</div>
+	</div>
 </body>
 </html>
