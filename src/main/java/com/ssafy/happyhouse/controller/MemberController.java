@@ -71,6 +71,10 @@ public class MemberController {
 		return LOGIN_PATH+"register";
 	}
 
+	@GetMapping("/forgotPassword")
+	public String forgotPassword() {
+		return MEMBER_PATH+"forgotPassword";
+	}
 	
 	
 	

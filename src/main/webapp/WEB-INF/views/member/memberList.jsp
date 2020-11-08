@@ -8,21 +8,9 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <title>회원 정보 관리</title>
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" />
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-<link rel="stylesheet" href="../css/user_manage.css" />
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="user_manage.js"></script>
+<jsp:include page="../theme/library.jsp"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user_manage.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/user_manage.js"></script>
 </head>
 <body>
 	<div class="container-xxl">
@@ -50,12 +38,9 @@
 									type="checkbox" id="selectAll" /> <label for="selectAll"></label>
 							</span></th>
 							<th>이메일</th>
-							<th>성</th>
 							<th>이름</th>
 							<th>전화번호</th>
-							<th>도/광역시</th>
-							<th>시/구/군</th>
-							<th>동</th>
+							<th>주소</th>
 							<th>관리</th>
 						</tr>
 					</thead>
@@ -67,12 +52,9 @@
 									<label for="checkbox1"></label>
 							</span></td>
 							<td>${member.email}</td>
-							<td>${member.lastname}</td>
-							<td>${member.firstname}</td>
+							<td>${member.name}</td>
 							<td>${member.phone}</td>
-							<td>${member.si}</td>
-							<td>${member.gu}</td>
-							<td>${member.dong}</td>
+							<td>${member.address}</td>
 							<td><a href="#editEmployeeModal" class="edit"
 								data-toggle="modal"><i
 									class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
