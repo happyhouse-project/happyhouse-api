@@ -6,27 +6,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="../css/index.css">
-<link rel="stylesheet" type="text/css" href="../css/noticeList.css">
+<jsp:include page="../theme/library.jsp"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/index.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/noticeList.css">
 <title>아파트·주택 관련 뉴스</title>
 </head>
 <body>
 	<div class="container-fluid p-0">
-		<jsp:include page="header.jsp"/>
+		<jsp:include page="../theme/header.jsp"/>
 		<div class="main">
 			<div class="infolist">
 				<h3>뉴스</h3>
 				<c:if test="${!empty member and member.auth eq 2}">
 				<button class="addBtn btn-right" type="button"
-								onclick="location.href = './news?act=newsInfo&page=1'">뉴스 추가하기</button></c:if>
+								onclick="location.href = './news/newsInfo?page=1'">뉴스 추가하기</button></c:if>
 				<hr class="hr-main">
 				<c:forEach items="${list}" var="news">
 					<p><a href="${news.link}">${news.title}</a></p><hr>
 				</c:forEach>
 			</div>
 		</div>
-		<jsp:include page="footer.html"/>
+		<jsp:include page="../theme/footer.jsp"/>
 	</div>
-	<jsp:include page="library.html"/>
 </body>
 </html>

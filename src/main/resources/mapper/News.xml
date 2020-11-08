@@ -5,38 +5,33 @@
 <mapper namespace="com.ssafy.happyhouse.mapper.NewsMapper">
 
 	<select id="selectAll" resultType="News">
-		select * from news
+		select * from housenews
 		order by id desc;
 	</select>
 	
 	<select id="selectByLimit7" resultType="News">
-		select id, title 
-		from news
+		select title, link 
+		from housenews
 		order by id desc
 		limit 7
 	</select>
 
-	<select id="selectOne" parameterType="int"
-		resultType="Notice">
-		select * from notice where id = #{id}
+	<select id="selectByPage" parameterType="int"
+		resultType="News">
+		select id, title, link, category 
+		from news
+		order by id asc
+		limit 20*(#{id}-1), 20
 	</select>
 
-	<insert id="insert" parameterType="News">
-		insert into notice
-		(title, content, writer)
-		values(#{title}, #{content}, #{writer})
+	<insert id="register" parameterType="News">
+		insert into housenews
+		(title, link, category, register, registerId)
+		values(#{title}, #{link}, #{category}, #{register}, #{registerId})
 	</insert>
 
-	<update id="update" parameterType="News">
-		update notice 
-		set title = #{title},
-		content = #{content}
-		where id = #{id}
-
-	</update>
-
 	<delete id="delete" parameterType="int">
-		delete from notice where id = #{id}
+		delete from housenews where id = #{id}
 	</delete>
 
 </mapper>

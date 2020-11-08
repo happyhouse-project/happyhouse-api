@@ -34,6 +34,4 @@ public class News {
 	/** 카테고리 */
 	private String category;
 
-	/** 크롤링 뉴스 테이블 id */
-	private int newsId;
 }
