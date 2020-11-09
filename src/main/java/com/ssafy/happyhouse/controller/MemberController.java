@@ -75,7 +75,4 @@ public class MemberController {
 	public String forgotPassword() {
 		return MEMBER_PATH+"forgotPassword";
 	}
-	
-	
-	
 }
