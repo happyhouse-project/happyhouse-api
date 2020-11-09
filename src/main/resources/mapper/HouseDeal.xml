@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.mapper.HouseDealMapper">
+
+	<!-- 드래그한 범위의 아파트 정보검색 -->
+	<select id="searchByDongAndAptName" parameterType="map" resultType="HouseDeal">
+		select no, dealAmount, dealYear, dealMonth, dealDay, area, floor 
+		from housedeal
+		where aptName = #{aptName} and dong = #{dong}
+	</select>
+</mapper>

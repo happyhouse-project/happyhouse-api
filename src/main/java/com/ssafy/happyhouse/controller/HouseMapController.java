@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ssafy.happyhouse.model.HouseDeal;
 import com.ssafy.happyhouse.model.HouseInfo;
+import com.ssafy.happyhouse.service.HouseDealService;
 import com.ssafy.happyhouse.service.HouseMapService;
 
 @Controller
@@ -28,6 +27,9 @@ public class HouseMapController {
 	
 	@Autowired
 	HouseMapService houseMapService;
+	
+	@Autowired
+	HouseDealService houseDealService;
 	
 	@GetMapping("/apt")
 	public String register() {
@@ -42,20 +44,38 @@ public class HouseMapController {
 		String from = loc.get("from");
 		String to = loc.get("to");
 		
-		System.out.println(from);
-		System.out.println(to);
-		
 		List<HouseInfo> list = new ArrayList<>();
 		JSONArray arr = new JSONArray();
 		try {
 			list = houseMapService.searchByLocation(from, to);
 			for(HouseInfo house : list) {
 				JSONObject obj = new JSONObject();
+				JSONArray deals = new JSONArray();
+				
+				List<HouseDeal> dealList = new ArrayList<HouseDeal>();
+				dealList = houseDealService.searchByDongAndAptName(house.getAptName(), house.getDong());
+				
+				JSONObject obj2 = new JSONObject();
+				for(HouseDeal houseDeal : dealList) {
+					obj2.put("no", houseDeal.getNo());
+					obj2.put("dealAmount", houseDeal.getDealAmount());
+					obj2.put("dealYear", houseDeal.getDealYear());
+					obj2.put("dealMonth", houseDeal.getDealMonth());
+					obj2.put("dealDay", houseDeal.getDealDay());
+					obj2.put("area", houseDeal.getArea());
+					obj2.put("floor", houseDeal.getFloor());
+					deals.add(obj2);
+				}
+				
 				obj.put("no", house.getNo());
 				obj.put("dong", house.getDong());
 				obj.put("aptName", house.getAptName());
 				obj.put("lat", house.getLat());
 				obj.put("lng", house.getLng());
+				obj.put("deals", deals);
+				if(dealList.size() > 0) {
+					obj.put("deal", dealList.get(0).getDealAmount());
+				}
 				arr.add(obj);
 			}
 		} catch (Exception e) {

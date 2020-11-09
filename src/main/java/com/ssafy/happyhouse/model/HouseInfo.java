@@ -1,5 +1,7 @@
 package com.ssafy.happyhouse.model;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -56,4 +58,13 @@ public class HouseInfo {
 	 * */
 	private String img;
 	
+	/**
+	 * 아파트 및 주택 실거래 가격정보 리스트
+	 * */
+	private List<HouseDeal> deals;
+	
+	/**
+	 * 아파트 가격 대푯값
+	 * */
+	private String deal;
 }
