@@ -8,8 +8,8 @@
 	</div>
 	<div class="menu">
 		<ul>
-			<li><a href="map/apt">아파트</a></li>
-			<li><a href="map/villa">연립다세대 주택</a></li>
+			<li><a href="${pageContext.request.contextPath}/map/apt">아파트</a></li>
+			<li><a href="${pageContext.request.contextPath}/map/villa">연립다세대 주택</a></li>
 			<li><a href="localInfo.html">동네 상가정보 확인</a></li>
 			<c:if test="${!empty member and member.auth eq 2}">
 				<li><a href="${pageContext.request.contextPath}/member/list">회원관리</a></li>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.mapper.HouseMapMapper">
+
+	<!-- 드래그한 범위의 아파트 정보검색 -->
+	<select id="searchByLocation" parameterType="map" resultType="HouseInfo">
+		select no, dong, aptName, lat, lng 
+		from houseinfo
+		where lat between #{fromLat} and #{toLat}
+		and lng between #{fromLng} and #{toLng}
+	</select>
+
+</mapper>

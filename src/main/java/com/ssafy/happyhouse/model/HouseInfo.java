@@ -17,15 +17,43 @@ public class HouseInfo {
 	private String no;
 	
 	/**
-	 * 아파트 및 주택 번호
+	 * 아파트 및 주택 법정동
 	 * */
 	private String dong;
+	
+	/**
+	 * 아파트 및 주택명
+	 * */
 	private String aptName;
+	
+	/**
+	 * 아파트 및 주택 시 코드
+	 * */
 	private String code;
+	
+	/**
+	 * 아파트 및 주택 건축연도
+	 * */
 	private String buildYear;
+	
+	/**
+	 * 아파트 및 주택 지번
+	 * */
 	private String jibun;
+	
+	/**
+	 * 아파트 및 주택 위도
+	 * */
 	private String lat;
+	
+	/**
+	 * 아파트 및 주택 경도
+	 * */
 	private String lng;
+	
+	/**
+	 * 아파트 및 주택 이미지
+	 * */
 	private String img;
-	private String deal;
+	
 }

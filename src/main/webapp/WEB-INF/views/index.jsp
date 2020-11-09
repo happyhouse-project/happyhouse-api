@@ -69,7 +69,7 @@
 							$.get("${pageContext.request.contextPath}/news/mainNewsList"
 									,function(data, status){
 										$.each(data, function(index, vo) {
-											$(".news").append("<div class='notice-link'><a href='"+vo.link+"'><span='ntc-news-title'>"+vo.title+"</span></a></div>");
+											$(".news").append("<div class='notice-link'><a href='"+vo.link+"'><span class='ntc-news-title'>"+vo.title+"</span></a></div>");
 										});//each
 									}//function
 									, "json"
@@ -90,7 +90,7 @@
 									,{act:"mainNoticeList"}
 									,function(data, status){
 										$.each(data, function(index, vo) {
-											$(".notice").append("<div class='notice-link'><a href='notice?act=detail&id="+vo.id+"'><span='ntc-news-title'>"+vo.title+"</span></a></div>");
+											$(".notice").append("<div class='notice-link'><a href='notice/detail?id="+vo.id+"'><span class='ntc-news-title'>"+vo.title+"</span></a></div>");
 										});//each
 									}//function
 									, "json"
