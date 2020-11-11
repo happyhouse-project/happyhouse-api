@@ -8,7 +8,7 @@ public class HappyhouseApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HappyhouseApplication.class, args);
-		
+		// branch test
 	}
 
 }
