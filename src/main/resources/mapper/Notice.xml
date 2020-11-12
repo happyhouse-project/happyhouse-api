@@ -21,7 +21,7 @@
 		select * from notice where id = #{id}
 	</select>
 
-	<insert id="insert" parameterType="Notice">
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Notice">
 		insert into notice
 		(title, content, writer)
 		values(#{title}, #{content}, #{writer})

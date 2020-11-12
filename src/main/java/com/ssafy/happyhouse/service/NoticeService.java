@@ -14,7 +14,6 @@ public interface NoticeService {
 
 	Notice selectOne(int id); // 공지사항 세부정보 가져오기
 
-	void delete(int id); // 공지사항 삭제
-
+	int delete(int id); // 공지사항 삭제
 
 }

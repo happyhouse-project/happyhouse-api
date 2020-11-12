@@ -35,7 +35,7 @@ public class NoticeDaoImpl implements NoticeDao {
 	}
 
 	@Override
-	public void delete(int id) {
-		noticeMapper.delete(id);
+	public int delete(int id) {
+		return noticeMapper.delete(id);
 	}
 }
