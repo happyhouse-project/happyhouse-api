@@ -9,7 +9,7 @@ import com.ssafy.happyhouse.dao.NoticeDao;
 import com.ssafy.happyhouse.model.Notice;
 
 @Service
-public class NoticeServiceImpl implements NoticeService{
+public class NoticeServiceImpl implements NoticeService {
 
 	@Autowired
 	NoticeDao noticeDao;
@@ -35,10 +35,7 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
-	public void delete(int id) {
-		noticeDao.delete(id);
+	public int delete(int id) {
+		return noticeDao.delete(id);
 	}
-	
-
-
 }

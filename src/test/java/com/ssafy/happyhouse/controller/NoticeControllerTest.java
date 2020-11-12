@@ -35,10 +35,24 @@ class NoticeControllerTest {
                 .build();
     }
 	
+	// 공지 리스트 가져오는 테스트코드
 	@Test
 	public void list() throws Exception {
-		mvc.perform(get("/notice/list"))
+		mvc.perform(get("/notices"))
 			.andExpect(status().isOk())
+			.andExpect(content().string(
+					containsString("\"title\":\"test공지\"")))
+			.andExpect(content().string(
+					containsString("\"content\":\"test\"")));
+	}
+	
+	// 공지 1개가져오는 테스트코드
+	@Test
+	public void detail() throws Exception {
+		mvc.perform(get("/notices/13"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(
+					containsString("\"id\":13")))
 			.andExpect(content().string(
 					containsString("\"title\":\"test공지\"")))
 			.andExpect(content().string(
