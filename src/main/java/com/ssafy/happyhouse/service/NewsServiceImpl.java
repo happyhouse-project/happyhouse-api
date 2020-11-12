@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ssafy.happyhouse.dao.NewsDao;
-import com.ssafy.happyhouse.model.Member;
 import com.ssafy.happyhouse.model.News;
 
 @Service
@@ -17,7 +16,7 @@ public class NewsServiceImpl implements NewsService {
 	NewsDao newsDao;
 
 	@Override
-	public void register(String[] newsInfo, Member member) {
+	public void register(String[] newsInfo, String member) {
 		// TODO: newsInfo => 문자열 파싱 후 뉴스 객체리스트 생성 후 파라미터로 전달
 		ArrayList<News> newsList = new ArrayList<>();
 		for (String news : newsInfo) {
@@ -25,8 +24,10 @@ public class NewsServiceImpl implements NewsService {
 			String title = st.nextToken();
 			String link = st.nextToken();
 			String category = st.nextToken();
-			String register = member.getName();
-			int registerId = member.getId();
+			
+			// TODO: 추후 jwt token사용시 수정
+			String register = member;
+			int registerId = 9;
 			
 			newsList.add(new News(0, title, link, register, registerId, category, null));
 		}
@@ -45,8 +46,8 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public void delete(int id) {
-		newsDao.delete(id);
+	public int delete(int id) {
+		return newsDao.delete(id);
 	}
 
 	@Override

@@ -30,8 +30,8 @@ public class NewsDaoImpl implements NewsDao{
 	}
 
 	@Override
-	public void delete(int id) {
-		newsMapper.delete(id);
+	public int delete(int id) {
+		return newsMapper.delete(id);
 	}
 
 	@Override
