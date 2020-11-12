@@ -1,103 +1,62 @@
 package com.ssafy.happyhouse.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.ssafy.happyhouse.model.Member;
 import com.ssafy.happyhouse.model.News;
-import com.ssafy.happyhouse.model.Notice;
 import com.ssafy.happyhouse.service.NewsService;
-import com.ssafy.happyhouse.service.NoticeService;
 
-@Controller
-@RequestMapping("/news")
+@RestController
 public class NewsController {
 
 	@Autowired
 	private NewsService newsService;
 	
-	private final static String PATH = "news/";
-	
 	// 전체 목록을 가져오는 처리
-	@GetMapping("/list")
-	public String list(Model model) {
-		List<News> list = newsService.selectAll();
-		model.addAttribute("list", list);
-		return PATH+"newsList";
+	@GetMapping("/news")
+	public List<News> list() {
+		return newsService.selectAll();
 	}
 	
 	// 메인 페이지에서 띄울 title 가져오기
-	@GetMapping("/mainNewsList")
-	@ResponseBody
-	public String mainList(Model model) {
-		ArrayList<News> list = new ArrayList<>();
-		JSONArray arr = new JSONArray();
-		try {
-			list = newsService.selectByLimit7();
-			for(News news : list) {
-				JSONObject obj = new JSONObject();
-				obj.put("title", news.getTitle());
-				obj.put("link", news.getLink());
-				arr.add(obj);
-			}
-		} catch (Exception e) {
-			arr = new JSONArray();
-			JSONObject obj = new JSONObject();
-			obj.put("message_code", "-1");
-			arr.add(obj);
-			e.printStackTrace();
-		} finally {
-			return arr.toJSONString();
-		}
-	}
-	
-	// 뉴스 정보 및 등록페이지 이동
-	@GetMapping("/newsInfo")
-	public String register(Model model, HttpServletRequest req) {
-		int page = Integer.parseInt(req.getParameter("page"));
-		ArrayList<News> list = new ArrayList<News>();
-		list = newsService.selectByPage(page);
-		model.addAttribute("list", list);
-		return PATH+"newsInfo";
+	@GetMapping("/news/main")
+	public List<News> mainList() {
+		return newsService.selectByLimit7();
 	}
 
 	// 선택한 뉴스 등록처리
-	@PostMapping("registerProcess")
-	public String registerProcess(HttpServletRequest req) {
-		String[] newsInfo = req.getParameterValues("newsInfo");
+	/**
+	 * [
+     *  "부산 아파트 매매·전세 가격 동반 상승세 지속###https://www.yna.co.kr/view/AKR20201015121200051?section=news###apt",
+     *  "안양 아파트 매매·전세 가격 동반 상승세 지속###https://www.yna.co.kr/view/AKR20201015121200051?section=news###apt"
+     * ]
+     * client에서 위와 같은 format으로 요청
+	 * */
+	@PostMapping("/news")
+	public ResponseEntity<?> create(@RequestBody String[] newsInfo) {
 		
-		for(String news : newsInfo) {
-			System.out.println(news);
-		}
-
-		HttpSession httpSession = req.getSession();
-		Member member = (Member) httpSession.getAttribute("member");
-
-		newsService.register(newsInfo, member);
+		// TODO: "admin"부분은 추후 jwt token사용해서 사용자 확인
+		newsService.register(newsInfo, "admin");
 		
-		return "redirect:/"+PATH+"list";
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
-	@PostMapping(value = "/delete")
-	public String read(HttpServletRequest req) {
-		int deleteId = Integer.parseInt(req.getParameter("id"));
-		newsService.delete(deleteId);
-		
-		return "redirect:/"+PATH+"list";
+	@DeleteMapping("/news/{id}")
+	public ResponseEntity<?> read(@PathVariable("id") int id) {
+		int result = newsService.delete(id);
+		if(result == 0) { // 삭제가 되지 않은 경우
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	
