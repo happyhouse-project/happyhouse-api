@@ -1,78 +1,84 @@
 package com.ssafy.happyhouse.controller;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.happyhouse.model.Member;
 import com.ssafy.happyhouse.service.MemberService;
 
-@Controller
-@RequestMapping("/member")
+@RestController
 public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
 	
-	private final static String MEMBER_PATH = "member/";
-	private final static String LOGIN_PATH = "login/";
-	
-	@GetMapping("/list")
-	public String list(Model model) {
+	// 1. member list	
+	@GetMapping("/members")
+	public List<Member> list() {
 		List<Member> list = memberService.list();
-		model.addAttribute("list", list);
-		return MEMBER_PATH+"memberList";
+		return list;
 	}
 	
-	@GetMapping("/register")
-	public String register() {
-		return LOGIN_PATH+"register";
-	}
-	
-	@PostMapping("/registerProcess")
-	public String registerProcess(@ModelAttribute Member member) {
-		member.setAuth(1);
-		memberService.register(member);
-		return LOGIN_PATH+"registerSuccess";
-	}
-	
-	@GetMapping("/login")
-	public String loginProcess() {
-		return LOGIN_PATH+"login";
-	}
-	
-	@PostMapping("/loginProcess")
-	public String loginProcess(HttpSession session, HttpServletRequest req) {
-		String email = req.getParameter("email");
-		String password = req.getParameter("password");
-		Member member = memberService.doLogin(email, password);
-		
-		session.setAttribute("member", member);
-		return LOGIN_PATH+"loginSuccess";
-	}
-	
-	@GetMapping("/logout")
-	public String logout(HttpSession session) {
-		session.setAttribute("member", null);
-		return LOGIN_PATH+"logout";
-	}
-	
-	@GetMapping("/modify")
-	public String modify() {
-		return LOGIN_PATH+"register";
+	// 2. member selectOne
+	@GetMapping("/members/{id}")
+	public Member selectOne(@PathVariable("id") int id) {
+		return memberService.selectOne(id);
 	}
 
-	@GetMapping("/forgotPassword")
-	public String forgotPassword() {
-		return MEMBER_PATH+"forgotPassword";
+	// 3. member create
+	@PostMapping("/members")
+	public ResponseEntity<?> create(@RequestBody Member resource) throws URISyntaxException {
+		Member member = new Member(0, 
+				resource.getEmail(), 
+				resource.getPassword(), 
+				resource.getName(), 
+				resource.getPhone(), 
+				resource.getAddress(), 
+				1, null);
+		
+		memberService.register(resource);
+		
+		String url = "members/" + member.getId();
+		return ResponseEntity.created(new URI(url)).body("member create successfully");
+	}
+	
+	// 4. member update
+	@PutMapping("/members/{id}")
+	public String update(@PathVariable("id") int id, @RequestBody Member resource) {
+		
+		Member member = new Member(id, 
+				resource.getEmail(), 
+				resource.getPassword(), 
+				resource.getName(), 
+				resource.getPhone(), 
+				resource.getAddress(), 
+				1, null);
+		
+		memberService.modifyMember(member);
+		return "member info updated";
+	}
+
+	// 5. member delete --> auth변경
+	@DeleteMapping("/members/{id}")
+	public ResponseEntity<?> delete(@PathVariable("id") int id) {
+		int result = memberService.inactiveMember(id);
+		
+		if(result == 0) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

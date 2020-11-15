@@ -18,8 +18,10 @@ public interface MemberMapper {
 
 	void modifyMember(Member member); // 회원 수정
 
-	void inactiveMember(int id); // 회원 비활성화
+	int inactiveMember(int id); // 회원 비활성화
 
 	Member doLogin(@Param("email")String email, @Param("password")String password); // 로그인 시도
+
+	Member selectOne(int id); // 회원 상세검색
 
 }

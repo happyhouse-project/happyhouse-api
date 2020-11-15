@@ -30,12 +30,17 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public void inactiveMember(int id) {
-		memberMapper.inactiveMember(id);
+	public int inactiveMember(int id) {
+		return memberMapper.inactiveMember(id);
 	}
 
 	@Override
 	public Member doLogin(String email, String password) {
 		return memberMapper.doLogin(email, password);
+	}
+
+	@Override
+	public Member selectOne(int id) {
+		return memberMapper.selectOne(id);
 	}
 }
