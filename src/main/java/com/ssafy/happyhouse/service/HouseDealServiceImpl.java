@@ -22,8 +22,8 @@ public class HouseDealServiceImpl implements HouseDealService{
 		
 		// dealAmount -> trim처리
 		for(int i=0; i<houseDeals.size(); i++) {
-			String deal = houseDeals.get(i).getDeal().trim().replace(",", "");
-			houseDeals.get(i).setDealAmount(Integer.parseInt(deal));
+			String deal = houseDeals.get(i).getDealAmount().trim().replace(",", "");
+			houseDeals.get(i).setDeal(Integer.parseInt(deal));
 		}
 		
 		// 정렬 처리

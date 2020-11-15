@@ -19,12 +19,12 @@ public class HouseDeal implements Comparable<HouseDeal>{
 	/**
 	 * 거래가격
 	 * */
-	private String deal;
+	private String dealAmount;
 	
 	/**
 	 * 거래가격(int)
 	 * */
-	private int dealAmount;
+	private int deal;
 	
 	/**
 	 * 거래연도
@@ -53,7 +53,7 @@ public class HouseDeal implements Comparable<HouseDeal>{
 
 	@Override
 	public int compareTo(HouseDeal o) {
-		return Integer.compare(o.dealAmount, this.dealAmount); // 가격별 내림차순 정렬
+		return Integer.compare(o.deal, this.deal); // 가격별 내림차순 정렬
 	}
 	
 }
