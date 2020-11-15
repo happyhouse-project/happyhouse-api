@@ -9,6 +9,12 @@
 		select * from member
 		order by id desc;
 	</select>
+	
+	<!-- 회원 상세 가져오기 -->
+	<select id="selectOne" resultType="Member">
+		select * from member
+		where id = #{id}
+	</select>
 
 	<!-- 회원 로그인 -->
 	<select id="doLogin" parameterType="map" resultType="Member">
@@ -18,21 +24,21 @@
 	</select>
 
 	<!-- 회원 등록 -->
-	<insert id="register" parameterType="Member">
+	<insert id="register" useGeneratedKeys="true" keyProperty="id" parameterType="Member">
 		insert into member
 		(email, password, name, phone, address, auth)
 		values(#{email}, #{password}, #{name}, #{phone}, #{address}, #{auth})
 	</insert>
 
 	<!-- 회원정보 수정 -->
-	<update id="update" parameterType="Member">
+	<update id="modifyMember" parameterType="Member">
 		update member 
 		set phone = #{phone},
 		address = #{address}
 		where id = #{id}
 	</update>
 
-	<!-- 회원비활성화 수정 -->
+	<!-- 회원 비활성화  -->
 	<update id="inactiveMember" parameterType="int">
 		update member
 		set auth = 0 

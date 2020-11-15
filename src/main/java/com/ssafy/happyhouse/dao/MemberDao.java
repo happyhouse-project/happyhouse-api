@@ -9,7 +9,8 @@ public interface MemberDao {
 	void register(Member member); // 회원 생성
 	ArrayList<Member> list(); // 회원 리스트
 	void modifyMember(Member member); // 회원 수정
-	void inactiveMember(int id); // 회원 비활성화
+	int inactiveMember(int id); // 회원 비활성화
 	Member doLogin(String email, String password); // 로그인 시도
+	Member selectOne(int id); // 회원 상세검색
 	
 }

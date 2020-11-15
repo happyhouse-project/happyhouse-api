@@ -30,12 +30,17 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public void inactiveMember(int id) {
-		memberDao.inactiveMember(id);
+	public int inactiveMember(int id) {
+		return memberDao.inactiveMember(id);
 	}
 
 	@Override
 	public Member doLogin(String email, String password) {
 		return memberDao.doLogin(email, password);
+	}
+
+	@Override
+	public Member selectOne(int id) {
+		return memberDao.selectOne(id);
 	}
 }
