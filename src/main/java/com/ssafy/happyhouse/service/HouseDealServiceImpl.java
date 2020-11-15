@@ -16,14 +16,14 @@ public class HouseDealServiceImpl implements HouseDealService{
 	HouseDealDao houseDealDao;
 	
 	@Override
-	public List<HouseDeal> searchByDongAndAptName(String aptName, String dong) {
+	public List<HouseDeal> searchByDongAndAptName(String aptName, String dong) { // 동과 아파트 이름정보를 가지고 실거래내역 검색
 		 
 		List<HouseDeal> houseDeals = houseDealDao.searchByDongAndAptName(aptName, dong);
 		
 		// dealAmount -> trim처리
 		for(int i=0; i<houseDeals.size(); i++) {
-			String dealAmount = houseDeals.get(i).getDealAmount().trim();
-			houseDeals.get(i).setDealAmount(dealAmount);
+			String deal = houseDeals.get(i).getDeal().trim().replace(",", "");
+			houseDeals.get(i).setDealAmount(Integer.parseInt(deal));
 		}
 		
 		// 정렬 처리
@@ -31,5 +31,4 @@ public class HouseDealServiceImpl implements HouseDealService{
 		
 		return houseDeals;
 	}
-
 }
