@@ -20,6 +20,7 @@ public class NewsServiceImpl implements NewsService {
 		// TODO: newsInfo => 문자열 파싱 후 뉴스 객체리스트 생성 후 파라미터로 전달
 		ArrayList<News> newsList = new ArrayList<>();
 		for (String news : newsInfo) {
+			System.out.println(news);
 			StringTokenizer st = new StringTokenizer(news, "###");
 			String title = st.nextToken();
 			String link = st.nextToken();
@@ -58,7 +59,7 @@ public class NewsServiceImpl implements NewsService {
 	@Override
 	public int countPage() {
 		int page = newsDao.countPage();
-		return (int) Math.ceil((double)page/10);
+		return (int) Math.ceil((double)page/20);
 	}
 
 }
