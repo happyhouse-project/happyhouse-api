@@ -24,6 +24,10 @@
 		limit #{from}, 20
 	</select>
 
+	<select id="countPage" resultType="int">
+		select count(*) as cnt from news
+	</select>
+	
 	<insert id="register" parameterType="java.util.List">
 		insert into housenews
 		(title, link, category, register, registerId)

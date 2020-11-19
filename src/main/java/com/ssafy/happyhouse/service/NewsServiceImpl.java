@@ -55,4 +55,10 @@ public class NewsServiceImpl implements NewsService {
 		return newsDao.selectByPage((page-1)*20);
 	}
 
+	@Override
+	public int countPage() {
+		int page = newsDao.countPage();
+		return (int) Math.ceil((double)page/10);
+	}
+
 }

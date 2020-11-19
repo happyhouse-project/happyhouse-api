@@ -35,6 +35,12 @@ public class NewsController {
 		return newsService.selectByPage(no);
 	}
 	
+	// 크롤링된 뉴스의 전체 갯수 가져옴
+	@GetMapping("/news/crawling/endPage")
+	public int crawlingListPage() {
+		return newsService.countPage();
+	}
+	
 	// 메인 페이지에서 띄울 title 가져오기
 	@GetMapping("/news/main")
 	public List<News> mainList() {

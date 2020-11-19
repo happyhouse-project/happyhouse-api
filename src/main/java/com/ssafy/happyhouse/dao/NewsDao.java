@@ -14,4 +14,6 @@ public interface NewsDao {
 	int delete(int id); // 뉴스 삭제
 
 	ArrayList<News> selectByPage(int from); // 크롤링된 뉴스 페이지 별로 20개씩 가져오기
+	
+	int countPage();
 }
