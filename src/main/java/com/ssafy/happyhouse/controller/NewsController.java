@@ -17,7 +17,7 @@ import com.ssafy.happyhouse.model.News;
 import com.ssafy.happyhouse.service.NewsService;
 
 @RestController
-@CrossOrigin("http://localhost:8080")
+@CrossOrigin("*")
 public class NewsController {
 
 	@Autowired
