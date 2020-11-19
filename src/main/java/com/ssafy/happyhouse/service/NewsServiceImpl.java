@@ -19,8 +19,7 @@ public class NewsServiceImpl implements NewsService {
 	public void register(String[] newsInfo, String member) {
 		// TODO: newsInfo => 문자열 파싱 후 뉴스 객체리스트 생성 후 파라미터로 전달
 		ArrayList<News> newsList = new ArrayList<>();
-		for (String news : newsInfo) {
-			System.out.println(news);
+		for (String news : newsInfo) {			
 			StringTokenizer st = new StringTokenizer(news, "###");
 			String title = st.nextToken();
 			String link = st.nextToken();
