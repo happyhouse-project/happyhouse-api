@@ -29,6 +29,12 @@ public class NewsController {
 		return newsService.selectAll();
 	}
 	
+	// 크롤링된 전체 목록을 가져오는 처리
+	@GetMapping("/news/crawling/{no}")
+	public List<News> crawlingList(@PathVariable("no") int no) {
+		return newsService.selectByPage(no);
+	}
+	
 	// 메인 페이지에서 띄울 title 가져오기
 	@GetMapping("/news/main")
 	public List<News> mainList() {
