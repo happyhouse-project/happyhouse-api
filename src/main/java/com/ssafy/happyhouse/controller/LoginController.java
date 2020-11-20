@@ -3,8 +3,6 @@ package com.ssafy.happyhouse.controller;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +30,7 @@ public class LoginController {
 	@Autowired
 	private JWTUtil jwtUtil;
 	
-	Logger logger = LoggerFactory.getLogger(LoginController.class);
+	// Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	// 1. login처리
 	@PostMapping("/login")
@@ -54,7 +52,7 @@ public class LoginController {
 		// 해당 유저정보를 가지고 token생성
 		String accessToken = jwtUtil.createToken(member.getId(), member.getName());
 		
-		logger.info(accessToken);
+		// logger.info(accessToken);
 		
 		LoginResponse loginResponse = LoginResponse.builder().accessToken(accessToken).build();
 		
