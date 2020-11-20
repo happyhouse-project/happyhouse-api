@@ -6,8 +6,8 @@ import com.ssafy.happyhouse.model.Member;
 
 public interface MemberService {
 
-	void register(Member member); // 회원 생성
-
+	void register(Member member) throws Exception; // 회원 생성
+ 
 	ArrayList<Member> list(); // 회원 리스트
 
 	void modifyMember(Member member); // 회원 수정

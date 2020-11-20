@@ -51,4 +51,9 @@ public class Member {
 	 * */
 	private String createDate;	
 	
+	/**
+	 * 회원 인증 키
+	 * */
+	private String authKey;
+	
 }

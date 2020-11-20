@@ -41,14 +41,14 @@ public class MemberController {
 
 	// 3. member create
 	@PostMapping("/members")
-	public ResponseEntity<?> create(@RequestBody Member resource) throws URISyntaxException {
+	public ResponseEntity<?> create(@RequestBody Member resource) throws Exception {
 		Member member = new Member(0, 
 				resource.getEmail(), 
 				resource.getPassword(), 
 				resource.getName(), 
 				resource.getPhone(), 
 				resource.getAddress(), 
-				1, null);
+				1, null, null);
 		
 		memberService.register(resource);
 		
@@ -66,7 +66,7 @@ public class MemberController {
 				resource.getName(), 
 				resource.getPhone(), 
 				resource.getAddress(), 
-				1, null);
+				1, null, null);
 		
 		memberService.modifyMember(member);
 		return "member info updated";
