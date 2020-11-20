@@ -16,6 +16,12 @@
 		where id = #{id}
 	</select>
 
+	<!-- 회원 상세 가져오기 -->
+	<select id="selectOneByEmail" resultType="Member">
+		select * from member
+		where email = #{email}
+	</select>
+
 	<!-- 회원 로그인 -->
 	<select id="doLogin" parameterType="map" resultType="Member">
 		select * from member

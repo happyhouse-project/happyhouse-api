@@ -23,5 +23,7 @@ public interface MemberMapper {
 	Member doLogin(@Param("email")String email, @Param("password")String password); // 로그인 시도
 
 	Member selectOne(int id); // 회원 상세검색
+	
+	Member selectOneByEmail(String email); // 회원 이메일을 이용한 상세검색
 
 }

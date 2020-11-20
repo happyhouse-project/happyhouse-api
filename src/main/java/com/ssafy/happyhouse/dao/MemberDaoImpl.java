@@ -43,4 +43,9 @@ public class MemberDaoImpl implements MemberDao {
 	public Member selectOne(int id) {
 		return memberMapper.selectOne(id);
 	}
+
+	@Override
+	public Member selectOneByEmail(String email) {
+		return memberMapper.selectOneByEmail(email);
+	}
 }
