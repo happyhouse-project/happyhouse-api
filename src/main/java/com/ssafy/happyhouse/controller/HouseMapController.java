@@ -38,12 +38,12 @@ public class HouseMapController {
 		list = houseMapService.searchByLocation(from, to);
 		for (HouseInfo house : list) {
 
-			List<HouseDeal> dealList = new ArrayList<HouseDeal>();
-			dealList = houseDealService.searchByDongAndAptName(house.getAptName(), house.getDong());
-			
-			house.setDeals(dealList);
+			// List<HouseDeal> dealList = new ArrayList<HouseDeal>();
+			// dealList = houseDealService.searchByDongAndAptName(house.getAptName(), house.getDong());
+			int deal = houseDealService.searchDealAmountByDongAndAptName(house.getAptName(), house.getDong());
+			house.setDeal(deal);
 		}
-
+		
 		return list;
 	}
 }

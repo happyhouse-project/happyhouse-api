@@ -19,4 +19,9 @@ public class HouseDealDaoImpl implements HouseDealDao{
 		return houseDealMapper.searchByDongAndAptName(aptName, dong);
 	}
 
+	@Override
+	public String searchDealAmountByDongAndAptName(String aptName, String dong) {
+		return houseDealMapper.searchDealAmountByDongAndAptName(aptName, dong);
+	}
+
 }	

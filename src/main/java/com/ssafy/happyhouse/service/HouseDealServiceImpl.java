@@ -31,4 +31,13 @@ public class HouseDealServiceImpl implements HouseDealService{
 		
 		return houseDeals;
 	}
+
+	@Override
+	public int searchDealAmountByDongAndAptName(String aptName, String dong) {
+		int deal = Integer.parseInt(
+				houseDealDao
+				.searchDealAmountByDongAndAptName(aptName, dong)
+				.trim().replace(",", ""));
+		return deal;
+	}
 }

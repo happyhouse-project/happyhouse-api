@@ -66,5 +66,5 @@ public class HouseInfo {
 	/**
 	 * 아파트 가격 대푯값
 	 * */
-	private String deal;
+	private int deal;
 }

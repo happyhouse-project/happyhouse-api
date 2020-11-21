@@ -10,4 +10,13 @@
 		from housedeal
 		where aptName = #{aptName} and dong = #{dong}
 	</select>
+	
+	<!-- 드래그한 범위의 아파트 정보검색 -->
+	<select id="searchDealAmountByDongAndAptName" parameterType="map" resultType="String">
+		select dealAmount
+		from housedeal
+		where aptName = #{aptName} and dong = #{dong}
+		order by dealYear desc, dealMonth desc, dealDay desc
+		limit 1
+	</select>
 </mapper>
