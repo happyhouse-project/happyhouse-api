@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,5 +47,16 @@ public class HouseMapController {
 		}
 		
 		return list;
+	}
+	
+	@GetMapping("/house/{no}")
+	public HouseInfo selectOne(@PathVariable("no") int no) {
+		HouseInfo houseInfo = houseMapService.searchByNo(no);
+		
+		List<HouseDeal> dealList = new ArrayList<HouseDeal>();
+		dealList = houseDealService.searchByDongAndAptName(houseInfo.getAptName(), houseInfo.getDong());
+		
+		houseInfo.setDeals(dealList);
+		return houseInfo;
 	}
 }

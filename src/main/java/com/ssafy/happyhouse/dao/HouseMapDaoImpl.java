@@ -18,4 +18,9 @@ public class HouseMapDaoImpl implements HouseMapDao{
 	public List<HouseInfo> searchByLocation(double fromLat, double fromLng, double toLat, double toLng) {
 		return houseMapMapper.searchByLocation(fromLat, fromLng, toLat, toLng);
 	}
+
+	@Override
+	public HouseInfo searchByNo(int no) {
+		return houseMapMapper.searchByNo(no);
+	}
 }

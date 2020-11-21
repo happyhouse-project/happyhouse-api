@@ -11,5 +11,12 @@
 		where lat between #{fromLat} and #{toLat}
 		and lng between #{fromLng} and #{toLng}
 	</select>
+	
+	<!-- 드래그한 범위의 아파트 정보검색 -->
+	<select id="searchByNo" parameterType="int" resultType="HouseInfo">
+		select no, dong, aptName, lat, lng 
+		from houseinfo
+		where no = #{no}
+	</select>
 
 </mapper>

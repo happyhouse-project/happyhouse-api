@@ -28,4 +28,9 @@ public class HouseMapServiceImpl implements HouseMapService{
 		
 		return houseMapDao.searchByLocation(fromLat, fromLng, toLat, toLng);
 	}
+
+	@Override
+	public HouseInfo searchByNo(int no) {
+		return houseMapDao.searchByNo(no);
+	}
 }
