@@ -48,4 +48,9 @@ public class MemberDaoImpl implements MemberDao {
 	public Member selectOneByEmail(String email) {
 		return memberMapper.selectOneByEmail(email);
 	}
+
+	@Override
+	public void updateAuth(String email, String key) {
+		memberMapper.updateAuth(email, key);
+	}
 }

@@ -32,8 +32,8 @@
 	<!-- 회원 등록 -->
 	<insert id="register" useGeneratedKeys="true" keyProperty="id" parameterType="Member">
 		insert into member
-		(email, password, name, phone, address, auth)
-		values(#{email}, #{password}, #{name}, #{phone}, #{address}, #{auth})
+		(email, password, name, phone, address, auth, authKey)
+		values(#{email}, #{password}, #{name}, #{phone}, #{address}, #{auth}, #{authKey})
 	</insert>
 
 	<!-- 회원정보 수정 -->
@@ -49,6 +49,14 @@
 		update member
 		set auth = 0 
 		where id = #{id}
+	</update>
+	
+	<!-- 회원 활성화  -->
+	<update id="updateAuth" parameterType="Map">
+		update member
+		set auth = 1,
+		authKey = #{key} 
+		where email = #{email}
 	</update>
 
 </mapper>

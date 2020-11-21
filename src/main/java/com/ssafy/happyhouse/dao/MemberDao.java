@@ -19,4 +19,6 @@ public interface MemberDao {
 	Member selectOne(int id); // 회원 상세검색
 
 	Member selectOneByEmail(String email); // 회원 이메일을 이용한 상세검색
+
+	void updateAuth(String email, String key);
 }

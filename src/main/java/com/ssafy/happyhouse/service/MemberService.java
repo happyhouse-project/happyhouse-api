@@ -1,12 +1,15 @@
 package com.ssafy.happyhouse.service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+
+import javax.mail.MessagingException;
 
 import com.ssafy.happyhouse.model.Member;
 
 public interface MemberService {
 
-	void register(Member member) throws Exception; // 회원 생성
+	void register(Member member) throws MessagingException, UnsupportedEncodingException; // 회원 생성
  
 	ArrayList<Member> list(); // 회원 리스트
 
@@ -19,4 +22,6 @@ public interface MemberService {
 	Member selectOne(int id); // 한명의 회원 검색
 
 	Member selectOneByEmail(String email); // 회원 이메일을 이용한 상세검색
+
+	void updateAuth(String email, String key); // 회원 인증 후 처리
 }

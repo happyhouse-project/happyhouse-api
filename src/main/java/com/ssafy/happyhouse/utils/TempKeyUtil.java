@@ -14,7 +14,7 @@ public class TempKeyUtil {
 
     private String init() {
         Random ran = new Random();
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         int num = 0;
 

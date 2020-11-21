@@ -1,9 +1,12 @@
 package com.ssafy.happyhouse.service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import javax.mail.MessagingException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,12 +28,14 @@ public class MemberServiceImpl implements MemberService{
 
 	PasswordEncoder passwordEncoder;
 	
+	Logger logger = LoggerFactory.getLogger(MemberServiceImpl.class);
+	
 	public MemberServiceImpl(PasswordEncoder passwordEncoder) {
 		this.passwordEncoder = passwordEncoder; 
 	}
 	
 	@Override
-	public void register(Member member) throws Exception {
+	public void register(Member member) throws MessagingException, UnsupportedEncodingException {
 		
 		// 패스워드 해싱(암호화)
 		String encodedPassword = passwordEncoder.encode(member.getPassword());
@@ -38,26 +43,26 @@ public class MemberServiceImpl implements MemberService{
 		member.setPassword(encodedPassword);
 		
 		// autoKey생성
-        String authKey = new TempKeyUtil().getKey(50, false);
-		memberDao.register(member);
+        String authKey = new TempKeyUtil().getKey(50, false);        
+        member.setAuthKey(authKey);
 		
 		// mail 작성 관련
         MailUtil sendMail = new MailUtil(mailSender);
 
-        sendMail.setSubject("[With Us 위드어스] 회원가입 이메일 인증");
-        sendMail.setText(new StringBuffer().append("<h1>[이메일 인증]</h1>")
+        sendMail.setSubject("[happyhouse] 회원가입 이메일 인증");
+        sendMail.setText(new StringBuilder().append("<h1>[이메일 인증]</h1>")
                 .append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
-                .append("<a href='http://localhost:9306/registerConfirm?uid=")
-                .append(member.getId())
-                .append("&email=")
+                .append("<a href='http://localhost:8080/registerConfirm?email=")
                 .append(member.getEmail())
                 .append("&authKey=")
                 .append(authKey)
                 .append("' target='_blank'>이메일 인증 확인</a>")
                 .toString());
-        sendMail.setFrom("doingnow94@gmail.com ", "위드어스");
+        sendMail.setFrom("doingnow94@gmail.com ", "happyhouse");
         sendMail.setTo(member.getEmail());
         sendMail.send();
+        
+        memberDao.register(member);
 	}
 
 	@Override
@@ -98,5 +103,10 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Member selectOneByEmail(String email) {
 		return memberDao.selectOneByEmail(email);
+	}
+
+	@Override
+	public void updateAuth(String email, String key) {
+		memberDao.updateAuth(email, key);
 	}
 }

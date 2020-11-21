@@ -26,4 +26,6 @@ public interface MemberMapper {
 	
 	Member selectOneByEmail(String email); // 회원 이메일을 이용한 상세검색
 
+	void updateAuth(@Param("email")String email, @Param("key")String key);
+
 }
