@@ -59,4 +59,12 @@ public class HouseMapController {
 		houseInfo.setDeals(dealList);
 		return houseInfo;
 	}
+	
+	// 키워드를 통한 아파트 검색기능 개발
+	@GetMapping("/house/search/apt/{keyword}")
+	public List<HouseInfo> selectOne(@PathVariable("keyword") String keyword) {
+		List<HouseInfo> houseInfoList = houseMapService.searchByAptKeyword(keyword);
+		
+		return houseInfoList;
+	}
 }
