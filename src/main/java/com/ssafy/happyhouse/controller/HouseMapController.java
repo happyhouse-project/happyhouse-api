@@ -19,7 +19,7 @@ import com.ssafy.happyhouse.service.HouseMapService;
 
 // house
 @RestController
-@CrossOrigin("*")
+@CrossOrigin
 public class HouseMapController {
 
 	@Autowired
