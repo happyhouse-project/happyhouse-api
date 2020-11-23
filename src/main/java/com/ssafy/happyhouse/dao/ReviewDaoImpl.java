@@ -19,4 +19,9 @@ public class ReviewDaoImpl implements ReviewDao{
 		return reviewMapper.selectAllByHouseNo(houseNo);
 	}
 
+	@Override
+	public void insert(Review review) {
+		reviewMapper.insert(review);
+	}
+
 }

@@ -19,4 +19,9 @@ public class ReviewServiceImpl implements ReviewService{
 		return reviewDao.selectAllByHouseNo(houseNo);
 	}
 
+	@Override
+	public void insert(Review review) {
+		reviewDao.insert(review);
+	}
+
 }

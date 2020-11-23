@@ -13,4 +13,11 @@
 		and houseNo = #{houseNo}
 		order by id desc
 	</select>
+	
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Review">
+		insert into review
+		(writerId, houseNo, content, rating)
+		values
+		(#{writerId}, #{houseNo}, #{content}, #{rating})
+	</insert>
 </mapper>
