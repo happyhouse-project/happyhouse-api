@@ -14,9 +14,16 @@
 	
 	<!-- 드래그한 범위의 아파트 정보검색 -->
 	<select id="searchByNo" parameterType="int" resultType="HouseInfo">
-		select no, dong, aptName, lat, lng 
+		select no, dong, aptName, buildYear, jibun, lat, lng 
 		from houseinfo
 		where no = #{no}
+	</select>
+	
+	<!-- 아파트 키워드를 통한 아파트 검색기능 -->
+	<select id="searchByAptKeyword" parameterType="String" resultType="HouseInfo">
+		select no, dong, aptName
+		from houseinfo
+		where aptName like concat('%', #{keyword}, '%')
 	</select>
 
 </mapper>
