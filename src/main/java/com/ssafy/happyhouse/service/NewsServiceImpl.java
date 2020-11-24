@@ -24,12 +24,13 @@ public class NewsServiceImpl implements NewsService {
 			String title = st.nextToken();
 			String link = st.nextToken();
 			String category = st.nextToken();
+			String agency = st.nextToken();
 			
 			// TODO: 추후 jwt token사용시 수정
 			String register = member;
 			int registerId = 9;
 			
-			newsList.add(new News(0, title, link, register, registerId, category, null));
+			newsList.add(new News(0, title, link, register, registerId, category, null, agency));
 		}
 		
 		newsDao.register(newsList);

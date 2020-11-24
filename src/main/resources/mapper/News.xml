@@ -18,7 +18,7 @@
 
 	<select id="selectByPage" parameterType="int"
 		resultType="News">
-		select id, title, link, category 
+		select id, title, link, category, date registerDate, agency
 		from news
 		order by id asc
 		limit #{from}, 20
@@ -30,12 +30,12 @@
 	
 	<insert id="register" parameterType="java.util.List">
 		insert into housenews
-		(title, link, category, register, registerId)
+		(title, link, category, register, registerId, agency)
 		values
 		<foreach item="item" collection="list" separator=",">
 		(#{item.title}, #{item.link}, 
 		#{item.category}, #{item.register}, 
-		#{item.registerId})
+		#{item.registerId}, #{item.agency})
 		</foreach>
 	</insert>
 

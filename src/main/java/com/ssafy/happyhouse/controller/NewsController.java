@@ -50,8 +50,8 @@ public class NewsController {
 	// 선택한 뉴스 등록처리
 	/**
 	 * [
-     *  "부산 아파트 매매·전세 가격 동반 상승세 지속###https://www.yna.co.kr/view/AKR20201015121200051?section=news###apt",
-     *  "안양 아파트 매매·전세 가격 동반 상승세 지속###https://www.yna.co.kr/view/AKR20201015121200051?section=news###apt"
+     *  "부산 아파트 매매·전세 가격 동반 상승세 지속###https://www.yna.co.kr/view/AKR20201015121200051?section=news###apt###서울경제신문",
+     *  "안양 아파트 매매·전세 가격 동반 상승세 지속###https://www.yna.co.kr/view/AKR20201015121200051?section=news###apt###동아일보"
      * ]
      * client에서 위와 같은 format으로 요청
 	 * */
