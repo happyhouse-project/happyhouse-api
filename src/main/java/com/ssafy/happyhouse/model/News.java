@@ -33,5 +33,8 @@ public class News {
 	
 	/** 뉴스 등록일자 */
 	private String registerDate;
+	
+	/** 뉴스 언론사 */
+	private String agency;
 
 }
