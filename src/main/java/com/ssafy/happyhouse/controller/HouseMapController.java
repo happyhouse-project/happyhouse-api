@@ -49,6 +49,7 @@ public class HouseMapController {
 		return list;
 	}
 	
+	// 아파트 세부정보 검색
 	@GetMapping("/house/{no}")
 	public HouseInfo selectOne(@PathVariable("no") int no) {
 		HouseInfo houseInfo = houseMapService.searchByNo(no);
@@ -57,6 +58,10 @@ public class HouseMapController {
 		dealList = houseDealService.searchByDongAndAptName(houseInfo.getAptName(), houseInfo.getDong());
 		
 		houseInfo.setDeals(dealList);
+		
+		// 아파트 조회 수 증가
+		houseMapService.countUpHit(no);
+		
 		return houseInfo;
 	}
 	

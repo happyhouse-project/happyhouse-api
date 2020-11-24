@@ -38,4 +38,9 @@ public class HouseMapServiceImpl implements HouseMapService{
 	public List<HouseInfo> searchByAptKeyword(String keyword) {
 		return houseMapDao.searchByAptKeyword(keyword);
 	}
+
+	@Override
+	public void countUpHit(int no) {
+		houseMapDao.countUpHit(no);
+	}
 }

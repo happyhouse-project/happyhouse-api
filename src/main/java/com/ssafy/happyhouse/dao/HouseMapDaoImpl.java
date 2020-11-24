@@ -28,4 +28,9 @@ public class HouseMapDaoImpl implements HouseMapDao{
 	public List<HouseInfo> searchByAptKeyword(String keyword) {
 		return houseMapMapper.searchByAptKeyword(keyword);
 	}
+
+	@Override
+	public void countUpHit(int no) {
+		houseMapMapper.countUpHit(no);
+	}
 }

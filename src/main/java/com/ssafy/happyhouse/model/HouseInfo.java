@@ -67,4 +67,9 @@ public class HouseInfo {
 	 * 아파트 가격 대푯값
 	 * */
 	private int deal;
+	
+	/**
+	 * 아파트 조회수
+	 * */
+	private int hit;
 }
