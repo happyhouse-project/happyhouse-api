@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.mapper.AccidentMapper">
+
+	<select id="searchByGuCode" resultType="Accident" parameterType="String">
+		select id, crimeCases, fireCases, trafficCases
+		from accident
+		where gu = (
+			select gugunName
+			from guguncode
+			where substring(gugunCode, 1, 5) = #{gucode}
+		)
+	</select>
+</mapper>
