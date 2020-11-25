@@ -18,13 +18,17 @@
 
 	<select id="selectOne" parameterType="int"
 		resultType="Notice">
-		select * from notice where id = #{id}
+		select n.id id, n.title title, n.content content,
+		n.writerId writerId, m.name writer, n.writeDate writeDate
+		from notice n, member m 
+		where n.id = #{id}
+		and n.writerId = m.id
 	</select>
 
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Notice">
 		insert into notice
-		(title, content, writer)
-		values(#{title}, #{content}, #{writer})
+		(title, content, writerId)
+		values(#{title}, #{content}, #{writerId})
 	</insert>
 
 	<update id="update" parameterType="Notice">

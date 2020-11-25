@@ -32,6 +32,11 @@ public class Notice {
 	private String writer;
 	
 	/**
+	 * 공지 작성자 아이디
+	 * */
+	private int writerId;
+	
+	/**
 	 * 공지 작성일
 	 * */
 	private String writeDate;
