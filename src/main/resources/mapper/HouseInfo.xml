@@ -14,7 +14,7 @@
 	
 	<!-- 아파트 번호를 이용한 검색 -->
 	<select id="searchByNo" parameterType="int" resultType="HouseInfo">
-		select no, dong, aptName, buildYear, jibun, lat, lng, img, hit
+		select no, dong, aptName, code, buildYear, jibun, lat, lng, img, hit
 		from houseinfo
 		where no = #{no}
 	</select>
@@ -24,6 +24,32 @@
 		select no, dong, aptName
 		from houseinfo
 		where aptName like concat('%', #{keyword}, '%')
+	</select>
+	
+	<!-- 아파트 인기순위 -->
+	<select id="chart" resultType="HouseInfo">
+		select no, dong, aptName, img, hit
+		from houseinfo
+		order by hit desc
+		limit 20
+	</select>
+	
+	<!-- 아파트 인기순위(구별) -->
+	<select id="chartByGu" resultType="HouseInfo">
+		select no, dong, aptName, hit
+		from houseinfo
+		where code = #{code}
+		order by hit desc
+		limit 20
+	</select>
+	
+	<!-- 아파트 인기순위(동별) -->
+	<select id="chartByDong" resultType="HouseInfo">
+		select no, dong, aptName
+		from houseinfo
+		where dong = #{dong}
+		order by hit desc
+		limit 20
 	</select>
 	
 	<update id="countUpHit" parameterType="int">

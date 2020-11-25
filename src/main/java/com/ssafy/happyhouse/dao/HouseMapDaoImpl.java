@@ -33,4 +33,9 @@ public class HouseMapDaoImpl implements HouseMapDao{
 	public void countUpHit(int no) {
 		houseMapMapper.countUpHit(no);
 	}
+
+	@Override
+	public List<HouseInfo> chart() {
+		return houseMapMapper.chart();
+	}
 }
