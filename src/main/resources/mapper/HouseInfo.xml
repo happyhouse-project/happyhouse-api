@@ -26,6 +26,32 @@
 		where aptName like concat('%', #{keyword}, '%')
 	</select>
 	
+	<!-- 아파트 인기순위 -->
+	<select id="chart" resultType="HouseInfo">
+		select no, dong, aptName, img, hit
+		from houseinfo
+		order by hit desc
+		limit 20
+	</select>
+	
+	<!-- 아파트 인기순위(구별) -->
+	<select id="chartByGu" resultType="HouseInfo">
+		select no, dong, aptName, hit
+		from houseinfo
+		where code = #{code}
+		order by hit desc
+		limit 20
+	</select>
+	
+	<!-- 아파트 인기순위(동별) -->
+	<select id="chartByDong" resultType="HouseInfo">
+		select no, dong, aptName
+		from houseinfo
+		where dong = #{dong}
+		order by hit desc
+		limit 20
+	</select>
+	
 	<update id="countUpHit" parameterType="int">
 		update houseinfo
 		set hit = hit+1

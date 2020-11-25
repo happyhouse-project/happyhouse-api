@@ -13,4 +13,6 @@ public interface HouseMapService {
 	List<HouseInfo> searchByAptKeyword(String keyword); // 아파트 키워드를 통한 아파트 검색기능 개발
 
 	void countUpHit(int no); // 아파트 조회수 증가
+
+	List<HouseInfo> chart(); // 조회수 내림차순으로 아파트정보 가져오기
 }

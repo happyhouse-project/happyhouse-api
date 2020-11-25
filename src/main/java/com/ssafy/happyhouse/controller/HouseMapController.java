@@ -72,4 +72,10 @@ public class HouseMapController {
 		
 		return houseInfoList;
 	}
+	
+	// 아파트 검색순위(1~20위)
+	@GetMapping("/house/charts")
+	public List<HouseInfo> chart() {
+		return houseMapService.chart();
+	}
 }
