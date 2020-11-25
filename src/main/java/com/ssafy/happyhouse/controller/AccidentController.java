@@ -14,10 +14,10 @@ import com.ssafy.happyhouse.service.AccidentService;
 public class AccidentController {
 	
 	@Autowired
-	AccidentService crimeService;
+	AccidentService accidentService;
 	
-	@GetMapping("/crimes/{gucode}")
+	@GetMapping("/safety/{gucode}")
 	public Accident selectOne(@PathVariable("gucode") String gucode) {
-		return crimeService.searchByGuCode(gucode);
+		return accidentService.searchByGuCode(gucode);
 	}
 }

@@ -14,7 +14,7 @@
 	
 	<!-- 아파트 번호를 이용한 검색 -->
 	<select id="searchByNo" parameterType="int" resultType="HouseInfo">
-		select no, dong, aptName, buildYear, jibun, lat, lng, img, hit
+		select no, dong, aptName, code, buildYear, jibun, lat, lng, img, hit
 		from houseinfo
 		where no = #{no}
 	</select>
